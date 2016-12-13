@@ -1,3 +1,15 @@
+// function drawMarker (type, coords) {
+//   var latLng = new google.maps.LatLng(coords[0], coords[1]);
+//   var iconURL = iconURLs[type];
+//   var marker = new google.maps.Marker({
+//     icon: iconURL,
+//     position: latLng
+//   });
+//   marker.setMap(currentMap);
+// }
+
+// const axios = require('axios')
+
 $(function initializeMap (){
 
   var fullstackAcademy = new google.maps.LatLng(40.705086, -74.009151);
@@ -41,7 +53,7 @@ $(function initializeMap (){
   });
 
   var iconURLs = {
-    hotel: '/images/lodging_0star.png',
+    bin: '/autorenew.png',
     restaurant: '/images/restaurant.png',
     activity: '/images/star-3.png'
   };
@@ -56,10 +68,21 @@ $(function initializeMap (){
     marker.setMap(currentMap);
   }
 
-  drawMarker('hotel', [40.705137, -74.007624]);
-  drawMarker('restaurant', [40.705137, -74.013940]);
-  drawMarker('activity', [40.716291, -73.995315]);
+  $.ajax({
+    method: 'GET',
+    url: '/api/bins',
+  })
+  .then(res => {
+    console.log(res)
+    res.forEach(bin => {
+      drawMarker('bin', [bin.latitude, bin.longitude])
+    })
+    .catch(err => {
+      console.error(err);
+      console.log('Error retrieving bins from db')
+    })
+  })
+
+  drawMarker('bin', [40.705137, -74.007624]);
 
 });
-
-console.log('maps.js')

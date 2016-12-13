@@ -16,15 +16,10 @@ app.use('/jquery', express.static(path.join(__dirname, '../node_modules/jquery/d
 app.use('/bootstrap', express.static(path.join(__dirname, '../node_modules/bootstrap/dist')));
 app.use(express.static(__dirname + "/../public"));
 
-// nunjucks.configure('views', { noCache: true });
-// app.set('view engine', 'html');
-// app.engine('html', nunjucks.render);
-
+app.use('/', require('./routes'));
+app.use('/api', require('./routes/api.js'))
 
 // ERROR HANDLING
-app.use('/', require('./routes'));
-
-
 app.use(function (err, req, res, next) {
     console.error(err, typeof next);
     console.error(err.stack)
