@@ -1,12 +1,12 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var nunjucks = require('nunjucks');
 
 var app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-
-app.use(express.static(__dirname + "../layouts"));
+app.use(express.static(__dirname + "/../public"));
 
 // nunjucks.configure('views', { noCache: true });
 // app.set('view engine', 'html');
