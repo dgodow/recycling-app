@@ -1,5 +1,6 @@
 var Promise = require('bluebird');
-var db = require('./models');
+var db = require('./models').db;
+var model = require('./models').RecyclingBins;
 
 var data = [
 {
@@ -4356,3 +4357,18 @@ var data = [
 "site_type": "Outdoor "
 }
 ]
+
+db.sync({force: true})
+.then(function () {
+  return Promise.map(data, function (row, index) {
+    return model.create(data[index]);
+  });
+})
+.catch(function (err) {
+  console.error('There was totally a problem', err, err.stack);
+})
+.finally(function () {
+  db.close() // uses promises but does not return a promise. https://github.com/sequelize/sequelize/pull/5776
+  return null; // silences bluebird warning about using non-returned promises inside of handlers.
+});
+
