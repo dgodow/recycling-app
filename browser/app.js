@@ -9,6 +9,6 @@ render(
   <Provider store={ store }>
   <Router history={ browserHistory }>
   </Router>
-</Provider>,
+  </Provider>,
 document.getElementById('main')
 )
