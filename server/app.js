@@ -1,13 +1,19 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var nunjucks = require('nunjucks');
+
 var db = require('./models').db;
 var RecyclingBins = require('./models').RecyclingBins;
+var path = require('path');
 
 var app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+
+app.use('/stylesheets', express.static(path.join(__dirname, '../public/stylesheets')));
+app.use('/jquery', express.static(path.join(__dirname, '../node_modules/jquery/dist')));
+app.use('/bootstrap', express.static(path.join(__dirname, '../node_modules/bootstrap/dist')));
 app.use(express.static(__dirname + "/../public"));
 
 // nunjucks.configure('views', { noCache: true });
@@ -16,6 +22,8 @@ app.use(express.static(__dirname + "/../public"));
 
 
 // ERROR HANDLING
+app.use('/', require('./routes'));
+
 
 app.use(function (err, req, res, next) {
     console.error(err, typeof next);
