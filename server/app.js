@@ -8,9 +8,9 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.use(express.static(__dirname + "../layouts"));
 
-nunjucks.configure('views', { noCache: true });
-app.set('view engine', 'html');
-app.engine('html', nunjucks.render);
+// nunjucks.configure('views', { noCache: true });
+// app.set('view engine', 'html');
+// app.engine('html', nunjucks.render);
 
 
 // ERROR HANDLING
