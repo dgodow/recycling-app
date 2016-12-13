@@ -39,7 +39,45 @@
       </p> -->
 
 
-      <div id="control-panel" class="col-sm-4 col-lg-3 clearfix">
+    <!-- <div id="control-panel" class="col-sm-4 col-lg-3 clearfix">
+      </div>
+    </div> -->
+
+    <!-- "col-sm-4 col-lg-3 clearfix" -->
+
+    <div id="item-selector" class="table-responsive col-sm-4 col-lg-3 clearfix">
+      <table class="table table-hover">
+        <tr class="item-selector-title-row">
+          <th>Item</th>
+          <th>Amount</th>
+        </tr>
+        <tr>
+          <th>Cans</th>
+          <th id="cans"><button type="button" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-arrow-up"></span></button><span class="num">0</span><button type="button" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-arrow-down"></span></button>
+          </th>
+        </tr>
+        <tr>
+          <th>Newspaper Pages</th>
+          <th id="newspaper"><button type="button" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-arrow-up"></span> </button><span class="num">0</span><button type="button" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-arrow-down"></span> </button></th>
+        </tr>
+          <th>Glass Bottles</th>
+          <th id="glass_bottles"><button type="button" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-arrow-up"></span> </button><span class="num">0</span><button type="button" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-arrow-down"></span> </button></th>
+        <tr>
+          <th>Plastic Bottles <p>(12oz or Larger)</p></th>
+          <th id="plastic_bottles"><button type="button" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-arrow-up"></span> </button><span class="num">0</span><button type="button" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-arrow-down"></span> </button></th>
+        </tr>
+        <tr>
+          <th>Aluminum Foil <p>(1 sq. ft.)</p></th>
+          <th id="aluminum_foil"><button type="button" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-arrow-up"></span> </button><span class="num">0</span><button type="button" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-arrow-down"></span> </button></th>
+        </tr>
+        <tr>
+          <th>Batteries</th>
+          <th id="batteries"><button type="button" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-arrow-up"></span> </button><span class="num">0</span><button type="button" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-arrow-down"></span> </button></th>
+        </tr>
+      </table>
+      <div class="item-selector-total">
+        <h2>TOTAL</h2>
+        <h3 class="totalValue">0</h3>
       </div>
     </div>
 
@@ -47,6 +85,7 @@
     <script src="/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfQxgWt-LSZcEmTEN8581Uq9SzZHnpuys"></script>
     <script src="/maps.js"></script>
+    <script src="/item-selector.js"></script>
 
   </body>
 </html>
