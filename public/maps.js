@@ -73,7 +73,7 @@ $(function initializeMap (){
     url: '/api/bins',
   })
   .then(res => {
-    console.log(res)
+    // console.log(res)
     res.forEach(bin => {
       drawMarker('bin', [bin.latitude, bin.longitude])
     })
@@ -83,6 +83,36 @@ $(function initializeMap (){
     })
   })
 
-  drawMarker('bin', [40.705137, -74.007624]);
+  var infoWindow = new google.maps.InfoWindow({map: currentMap});
+  var userIcon = new google.maps.Marker({
+    map: currentMap,
+    icon: 'personpin2.png'
+  })
 
+  // Try HTML5 geolocation.
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+      // infoWindow.setPosition(pos);
+      userIcon.setPosition(pos)
+      // infoWindow.setContent('Location found.');
+      currentMap.setCenter(pos);
+    }, function() {
+      handleLocationError(true, infoWindow, currentMap.getCenter());
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, currentMap.getCenter());
+  }
+
+  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(pos);
+  infoWindow.setContent(browserHasGeolocation ?
+                        'Error: The Geolocation service failed.' :
+                        'Error: Your browser doesn\'t support geolocation.');
+}
 });
