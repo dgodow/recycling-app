@@ -12,3 +12,8 @@ var RecyclingBins = db.define('recycling-bins', {
   park_site_name: Sequelize.STRING,
   site_type: Sequelize.STRING
 });
+
+module.exports = {
+  db,
+  RecyclingBins
+}

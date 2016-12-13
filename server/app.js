@@ -1,8 +1,10 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var nunjucks = require('nunjucks');
-var path = require('path');
 
+var db = require('./models').db;
+var RecyclingBins = require('./models').RecyclingBins;
+var path = require('path');
 
 var app = express();
 
@@ -33,5 +35,11 @@ app.use(function (err, req, res, next) {
 
 app.listen(1337, function (err) {
   if (err) throw err;
-  console.log("Listening on 1337");
+  db.sync()
+  .then(function () {
+    console.log("Listening on 1337");
+  })
+  .catch(function (err) {
+    console.error(err);
+  })
 })
